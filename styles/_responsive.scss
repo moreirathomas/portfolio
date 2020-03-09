@@ -4,39 +4,6 @@
 // 1024
 @mixin medium-screen() {
     @media (max-width: $medium-screen) {
-        nav {
-            position: fixed;
-            width: 8rem;
-            right: 4rem;
-            top: 0;
-
-            ul{
-                flex-direction: column;
-                height: 40vh;
-                margin: 0;
-                opacity: 0;
-                transition: opacity 0.5s;
-
-                &.isShown{
-                    opacity: 1;
-                }
-
-                li{
-                    display: block;
-                    text-align: center;
-                    margin: 0;
-                }
-            }
-            .gg-menu-round{
-                display: block;
-                margin: auto;
-
-                &:hover{
-                    color: $red;
-                    cursor: pointer;
-                }
-            }
-        }
         .content{
             max-width: 80%;
         }
@@ -95,6 +62,7 @@
         .content{
             h1{
                 font-size: fontSize(bigger) * .75;
+                width: max-content;
             }
             h2{
                 font-size: fontSize(big);
@@ -114,6 +82,7 @@
         }
     }
 }
+
 
 :root{
     @include medium-screen();

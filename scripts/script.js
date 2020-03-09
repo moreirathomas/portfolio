@@ -72,10 +72,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // dropdown menu
 const menuToggle = document.querySelector('.gg-menu-round')
-const dropDownMenu = document.querySelector('nav ul')
-const menuItems = document.querySelectorAll('nav ul li')
+const dropDownMenu = document.querySelector('nav .gg-menu-round ul')
+const menuItems = document.querySelectorAll('nav .gg-menu-round ul li')
 console.log(menuItems)
 let isMenuShown = false
+
 function showMenu(){
     if (isMenuShown === false){
         dropDownMenu.classList.add('isShown')
@@ -119,7 +120,6 @@ menuToggle.addEventListener('touchend', function(e) {
         {easing: 'ease-in-out'}
     )
     showMenu()
-    // isMenuShown = !isMenuShown
 })
 
 for (const item of menuItems) {
@@ -127,7 +127,6 @@ for (const item of menuItems) {
         e.preventDefault();
 
         showMenu()
-        // isMenuShown = !isMenuShown
     })
 }
 
@@ -141,12 +140,10 @@ menuToggle.addEventListener('click', function(e){
         {easing: 'ease-in-out'}
     )
     showMenu()
-    // isMenuShown = !isMenuShown
 })
 
 for (const item of menuItems) {
     item.addEventListener('click', function(e){
         showMenu()
-        // isMenuShown = !isMenuShown
     })
 }

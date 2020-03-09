@@ -65,79 +65,58 @@ a{
 }
 nav{
     position: sticky;
-    max-width: 44%;
-    margin-left: 56%;
+    max-width: 10%;
+    margin-left: 90%;
     top: 5rem;
     margin-top: topMargin(regular);
-    ul{
-        display: flex;
-        justify-content: space-evenly;
-        margin-left: 10%;
+    
+    .toggle-wrapper{
+        @include themify(){
+            background: themed('toggle-color');
+        }
+        
+        position: relative;
+        width: 1rem;
+        height: 1rem;
+        padding: 1rem;
 
-        li{
+        .theme-toggle{
+            position: absolute;
             display: inline-block;
-            // margin-left: 2rem;
-            font-size: fontSize(regular) * 0.625;
-            font-weight: fontWeight(bold);
-            text-transform: uppercase;
-            
-            a{
-                padding: 1rem 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+
+            &.theme-light::after{
+                content: '';
+                position: absolute;
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 0.1rem;
+                left: 0.4rem;
+                border-radius: 50%;
+                background: $white;
             }
-
-            &:hover{
-                color: $red;
-                cursor: pointer;
-            }
-
-            .toggle-wrapper{
-                @include themify(){
-                    background: themed('toggle-color');
-                }
-                position: relative;
-                width: 1rem;
-                height: 1rem;
-                padding: 1rem;
-                top: -0.5rem;
-                margin: auto;
-
-                .theme-toggle{
-                    position: absolute;
-                    display: inline-block;
-                    width: 1rem;
-                    height: 1rem;
-                    border-radius: 50%;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                    &.theme-light::after{
-                        content: '';
-                        position: absolute;
-                        width: 0.8rem;
-                        height: 0.8rem;
-                        top: 0.1rem;
-                        left: 0.4rem;
-                        border-radius: 50%;
-                        background: $white;
-                    }
-                    &.theme-dark::after{
-                        content: '';
-                        position: absolute;
-                        width: 1.4rem;
-                        height: 1.4rem;
-                        top: -0.2rem;
-                        left: -0.2rem;
-                        border-radius: 50%;
-                        border: 1px dotted;
-                    }
-                }
+            &.theme-dark::after{
+                content: '';
+                position: absolute;
+                width: 1.4rem;
+                height: 1.4rem;
+                top: -0.2rem;
+                left: -0.2rem;
+                border-radius: 50%;
+                border: 1px dotted;
             }
         }
-    }
-    .gg-menu-round{
-        display: none;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 
