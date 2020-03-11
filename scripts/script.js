@@ -70,26 +70,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     })
 })
 
-// dropdown menu
-const menuToggle = document.querySelector('.gg-menu-round')
-const dropDownMenu = document.querySelector('nav .gg-menu-round ul')
-const menuItems = document.querySelectorAll('nav .gg-menu-round ul li')
-console.log(menuItems)
-let isMenuShown = false
+// // dropdown menu
+// const menuToggle = document.querySelector('.gg-menu-round')
+// const dropDownMenu = document.querySelector('nav .gg-menu-round ul')
+// const menuItems = document.querySelectorAll('nav .gg-menu-round ul li')
+// console.log(menuItems)
+// let isMenuShown = false
 
-function showMenu(){
-    if (isMenuShown === false){
-        dropDownMenu.classList.add('isShown')
-        menuToggle.style.color ='rgb(251, 32, 59)'
-    }
-    else {
-        dropDownMenu.classList.remove('isShown')
-        menuToggle.style.color ='inherit'
-    }
-    isMenuShown = !isMenuShown
-}
+// function showMenu(){
+//     if (isMenuShown === false){
+//         dropDownMenu.classList.add('isShown')
+//         menuToggle.style.color ='rgb(251, 32, 59)'
+//     }
+//     else {
+//         dropDownMenu.classList.remove('isShown')
+//         menuToggle.style.color ='inherit'
+//     }
+//     isMenuShown = !isMenuShown
+// }
 
-// menuToggle.addEventListener('click', function(event){
+
+// concurrent "touch AND mouse/keyboard" event binding
+
+// set up event listeners for touch
+// menuToggle.addEventListener('touchend', function(e) {
+//     // prevent compatibility mouse events and click
+//     e.preventDefault();
+
 //     menuToggle.animate([
 //         {transform: 'scale(1)'},
 //         {transform: 'scale(0.9)'}],
@@ -97,38 +104,15 @@ function showMenu(){
 //         {easing: 'ease-in-out'}
 //     )
 //     showMenu()
-//     isMenuShown = !isMenuShown
 // })
+
 // for (const item of menuItems) {
-//     item.addEventListener('click', function(event){
+//     item.addEventListener('touchend', function(e){
+//         e.preventDefault();
+
 //         showMenu()
-//         isMenuShown = !isMenuShown
 //     })
 // }
-
-// concurrent "touch AND mouse/keyboard" event binding
-
-// set up event listeners for touch
-menuToggle.addEventListener('touchend', function(e) {
-    // prevent compatibility mouse events and click
-    e.preventDefault();
-
-    menuToggle.animate([
-        {transform: 'scale(1)'},
-        {transform: 'scale(0.9)'}],
-        {duration: 100},
-        {easing: 'ease-in-out'}
-    )
-    showMenu()
-})
-
-for (const item of menuItems) {
-    item.addEventListener('touchend', function(e){
-        e.preventDefault();
-
-        showMenu()
-    })
-}
 
 // set up event listeners for mouse/keyboard
 menuToggle.addEventListener('click', function(e){
