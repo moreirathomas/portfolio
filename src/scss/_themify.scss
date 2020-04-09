@@ -1,0 +1,35 @@
+$themes: (
+  light: (
+    background-color: rgb(250, 251, 252),
+    text-color: rgb(25, 26, 27),
+    toggle-color: rgb(25, 26, 27),
+  ),
+  dark: (
+    background-color: rgb(25, 26, 27),
+    text-color: rgb(250, 251, 252),
+    toggle-color: rgb(250, 251, 252),
+  ),
+);
+
+@mixin themify() {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

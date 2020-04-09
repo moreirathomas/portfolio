@@ -1,0 +1,92 @@
+:root {
+  --icon-size: 4rem;
+  --line-width: (var(--icon-size) * 0.625); /*62.5px*/
+  --line-height: (var(--icon-size) * 0.075); /*7.5px*/
+  --before-line-spacing: (var(--icon-size) * -0.2); /*-20pxpx*/
+  --after-line-spacing: (var(--icon-size) * 0.2); /*20px*/
+  --mid-line-translate: (var(--icon-size) * -1); /*-100px*/
+  --before-line-translateX: (var(--icon-size) * 0.7); /*70px*/
+  --before-line-translateY: (var(--icon-size) * -0.7); /*-70px*/
+  --after-line-translateX: (var(--icon-size) * 0.7); /*70px*/
+  --after-line-translateY: (var(--icon-size) * 0.7); /*70px*/
+}
+@import './themify';
+// @include in nav{}
+@mixin burger-menu {
+  input#menu-btn {
+    display: none;
+  }
+  .menu-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+    z-index: 1;
+    // for desktop
+    display: none;
+
+    &__btn {
+      width: calc(var(--line-width));
+      height: calc(var(--line-height));
+      transition: all 0.2s ease-in-out;
+      border-radius: 5px;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: calc(var(--line-width));
+        height: calc(var(--line-height));
+        transition: all 0.2s ease-in-out;
+        border-radius: 5px;
+      }
+      &::before {
+        transform: translateY(calc(var(--before-line-spacing)));
+      }
+      &::after {
+        transform: translateY(calc(var(--after-line-spacing)));
+      }
+
+      &.theme-light {
+        background-color: #191a1b;
+        &::before,
+        &::after {
+          background-color: #191a1b;
+        }
+      }
+
+      &.theme-dark {
+        background-color: #fafbfc;
+        &::before,
+        &::after {
+          background-color: #fafbfc;
+        }
+      }
+    }
+
+    &.open > .menu-icon__btn {
+      transform: translateX(calc(var(--mid-line-translate)));
+      background-color: transparent !important;
+
+      &::before {
+        transform: rotate(45deg)
+          translate(
+            calc(var(--before-line-translateX)),
+            calc(var(--before-line-translateY))
+          );
+      }
+      &::after {
+        transform: rotate(-45deg)
+          translate(
+            calc(var(--after-line-translateX)),
+            calc(var(--after-line-translateY))
+          );
+      }
+    }
+  }
+}

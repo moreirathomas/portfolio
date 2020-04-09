@@ -1,0 +1,138 @@
+@import './themify';
+// Medium screen
+@mixin medium-screen() {
+  @media (max-width: 1024px) {
+    .content {
+      max-width: 80%;
+    }
+  }
+}
+
+// Smaller screen
+@mixin smaller-sceen() {
+  @media (max-width: 900px) {
+    nav {
+      width: 100%;
+      margin-right: 5%;
+      top: 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      &.shown {
+        background-color: inherit;
+      }
+      .menu-icon {
+        display: flex;
+        margin: 1rem 1rem;
+      }
+
+      .nav-links {
+        // display non by default
+        display: none;
+        flex-direction: row;
+        padding: 1rem 1rem;
+        margin-left: 25%;
+        &.shown {
+          display: flex;
+        }
+        li {
+          margin: 1rem 2rem;
+        }
+      }
+      .content {
+        max-width: 100%;
+      }
+    }
+  }
+}
+// Bigger mobile
+@mixin bigger-mobile() {
+  @media (max-width: 768px) {
+    .content {
+      max-width: 100%;
+      h1 {
+        font-size: 8.75rem;
+      }
+      h2 {
+        font-size: 5.625rem;
+      }
+      #contact li {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+// Mobile
+@mixin mobile {
+  @media (max-width: 600px) {
+    .content {
+      h1 {
+        font-size: 7.5rem;
+      }
+      #contact li {
+        display: block;
+        margin-top: 1.25rem;
+      }
+      #contact li:first-child {
+        margin-top: 5rem;
+      }
+    }
+  }
+}
+// Smaller mobile
+@mixin smaller-mobile {
+  @media (max-width: 480px) {
+    nav {
+      &.shown {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        justify-content: flex-end;
+        align-items: flex-start;
+        .menu-icon {
+          position: absolute;
+          right: 5%;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          width: max-content;
+          font-size: 2.5rem;
+          margin-left: 10%;
+          margin-top: 10%;
+        }
+      }
+    }
+    .content {
+      h1 {
+        font-size: 5.625rem;
+        width: max-content;
+      }
+      h2 {
+        font-size: 4rem;
+      }
+      h3 {
+        font-size: 3.5rem;
+      }
+      p.lead {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1.75rem;
+      }
+      #contact li {
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
+
+:root {
+  @include medium-screen();
+  @include smaller-sceen();
+  @include bigger-mobile();
+  @include mobile();
+  @include smaller-mobile();
+}
