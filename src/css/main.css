@@ -403,6 +403,28 @@ main .content h3 {
   margin-top: 7.5rem;
 }
 
+main .content h3 a {
+  position: relative;
+}
+
+main .content h3 a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  left: 0;
+  -webkit-transition: all 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: transparent;
+}
+
+main .content h3:hover a::after {
+  width: 100%;
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+  background-color: rgba(12, 47, 251, 0.2);
+}
+
 main .content .about-content > p {
   font-size: 2rem;
   margin-top: 1rem;
