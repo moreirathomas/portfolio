@@ -405,6 +405,7 @@ main .content h3 {
 
 main .content h3 a {
   position: relative;
+  z-index: -1;
 }
 
 main .content h3 a::after {
