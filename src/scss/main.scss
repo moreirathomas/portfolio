@@ -83,7 +83,6 @@ main {
       margin-top: 7.5rem;
       a {
         position: relative;
-        z-index: -1;
         &::after {
           content: '';
           position: absolute;
